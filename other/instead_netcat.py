@@ -5,7 +5,7 @@ import threading
 import subprocess
 
 
-#定义一些全局变量
+
 listen              = False
 command             = False
 upload              = False
@@ -42,15 +42,15 @@ def main():
     if not len(sys.argv[1:]):
         usage()
 
-    #读取命令行
+
     try:
-        opts,args = getopt.getopt(sys.argv[1:],"hle:t:p:cu:",            #getopt(args, shortopts, longopts = []) args “参数” shortopts "短参数，加：说明后面有带参数值" longopts = []长参数
+        opts,args = getopt.getopt(sys.argv[1:],"hle:t:p:cu:",
         ["help","listen","execute","target","port","command","upload"])
     except getopt.GetoptError as err:
         print(str(err))
         usage()
 
-    for o,a in opts:  #遍历参数表 o代表参数 a代表参数值 绑定
+    for o,a in opts:
         if o in ("-h","--help"):
             usage()
         elif o in ("-l","--listen"):
@@ -87,7 +87,7 @@ def main():
                                 break
                     print(response),
 
-                    buffer = input("输入：")
+                    buffer = raw_input("")
                     buffer += "\n"
                     client.send(buffer)
             except:
